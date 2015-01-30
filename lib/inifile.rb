@@ -575,7 +575,7 @@ class IniFile
     #
     # Raises IniFile::Error
     def error( msg = 'Could not parse line' )
-      raise Error, "#{msg}: #{@line.inspect}"
+      puts "*** ERROR => #{msg}: #{@line.inspect}"
     end
 
     # Attempt to typecast the value string. We are looking for boolean values,
