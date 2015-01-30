@@ -125,7 +125,7 @@ class IniFile
     return unless File.file? filename
 
     mode = encoding ? "r:#{encoding}" : "r"
-    File.open(filename, mode) { |fd| parse fd }
+    File.open(filename, mode) { |fd| parse fd.encode('UTF-8','binary', invalid: :replace, undef: :replace, replace: '') }
     self
   end
   alias :restore :read
