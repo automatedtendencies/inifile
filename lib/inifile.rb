@@ -538,9 +538,7 @@ class IniFile
 
       # check here if we have a dangling value ... usually means we have an
       # unmatched open quote
-      if leading_quote?
-        error "Unmatched open quote"
-      elsif property && value
+      if property && value
         process_property
       elsif value
         error
