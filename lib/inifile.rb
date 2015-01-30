@@ -125,7 +125,7 @@ class IniFile
     return unless File.file? filename
 
     mode = encoding ? "r:#{encoding}" : "r"
-    File.open(filename, mode) { |fd| parse fd.encode('UTF-8','binary', invalid: :replace, undef: :replace, replace: '') }
+    File.open(filename, mode) { |fd| parse fd }
     self
   end
   alias :restore :read
@@ -505,6 +505,8 @@ class IniFile
     # Returns nil.
     def parse( content )
       return unless content
+
+      content.encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
 
       continuation = false
 
