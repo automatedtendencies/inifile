@@ -506,7 +506,7 @@ class IniFile
     def parse( content )
       return unless content
 
-      content.encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
+      content = content.read.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
 
       continuation = false
 
